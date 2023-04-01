@@ -21,6 +21,8 @@ def is_the_name_unique(name):
 
 
 def is_the_subject_correct(subject):
+    if not subject:
+        raise ValueError('Предмет не может быть пустым!')    
     try:
         Subject.objects.get(title=subject)
     except exceptions.ObjectDoesNotExist:
