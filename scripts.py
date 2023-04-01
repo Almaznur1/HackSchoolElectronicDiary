@@ -5,6 +5,8 @@ from django.core import exceptions
 
 
 def is_the_name_unique(name):
+    if not name:
+        raise ValueError('Имя не может быть пустым!')
     try:
         Schoolkid.objects.get(full_name__contains=name)
     except exceptions.MultipleObjectsReturned:
